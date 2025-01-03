@@ -1,20 +1,37 @@
-variable "aws_region" {
-  description = "AWS region"
-  type        = string
-  default     = "us-west-2"
-}
-
+# General
 variable "environment" {
   description = "Environment (dev, staging, prod)"
   type        = string
 }
 
-variable "project_name" {
-  description = "Name of the project"
+variable "project" {
+  description = "Project name"
   type        = string
 }
 
-# Source resources
+# S3
+variable "data_bucket_name" {
+  description = "Name of the S3 bucket for semantic layer data"
+  type        = string
+}
+
+# Athena
+variable "database_name" {
+  description = "Name of the Athena database for semantic layer"
+  type        = string
+}
+
+variable "workgroup_name" {
+  description = "Name of the Athena workgroup for semantic layer"
+  type        = string
+}
+
+# IAM
+variable "glue_role_name" {
+  description = "Name of the IAM role for Glue"
+  type        = string
+}
+
 variable "source_bucket_arn" {
   description = "ARN of the source S3 bucket"
   type        = string
@@ -25,12 +42,12 @@ variable "source_athena_workgroup_arn" {
   type        = string
 }
 
-variable "source_database" {
-  description = "Name of the source Athena database"
+# Glue
+variable "glue_job_name" {
+  description = "Name of the Glue ETL job"
   type        = string
 }
 
-# Glue configuration
 variable "script_bucket" {
   description = "S3 bucket containing Glue scripts"
   type        = string
@@ -38,6 +55,11 @@ variable "script_bucket" {
 
 variable "script_key" {
   description = "S3 key for the Glue script"
+  type        = string
+}
+
+variable "source_database" {
+  description = "Name of the source Athena database"
   type        = string
 }
 
